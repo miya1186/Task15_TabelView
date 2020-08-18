@@ -56,11 +56,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //課題15 Bool値が true → false  false　→ true
-        if fruitItems[indexPath.row][KeyCheck] as! Bool == true{
-            fruitItems[indexPath.row].updateValue(false,forKey: KeyCheck)
-        }else{
-            fruitItems[indexPath.row].updateValue(true,forKey: KeyCheck)
+        //fruitItemsのKeyCheckの値がBoolに変換できたとき、checkにBool値を代入
+        if let check = fruitItems[indexPath.row][KeyCheck] as? Bool {
+            //Bool値の頭に！をつけることで値を反転
+            fruitItems[indexPath.row][KeyCheck] = !check
         }
         tableView.reloadData()
     }
